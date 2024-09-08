@@ -1,32 +1,33 @@
 from PIL import Image, ImageDraw, ImageFont
-from font_tool import font_tool
+
 from _types import *
+from fonttool import FontTool
 
 
-class render:
+class Render:
     """Text render for image generate."""
 
     def __init__(self, font_path: StrOrBytesPath, font_size: float = 12):
         self.font = ImageFont.truetype(font_path, font_size)
 
         # get font's bound box
-        min_left, _, max_right, max_btm = font_tool.get_fontbbox(self.font)
+        min_left, _, max_right, max_btm = FontTool.get_fontbbox(self.font)
         self.width = max_right - min_left
         self.height = max_btm
 
     def rend(
-        self,
-        lines: list[str],
-        padding_offset: float = 0,
-        margin: float = 0,
-        text_color: tuple[int, int, int] = (0, 0, 0),
-        background_color: tuple[int, int, int] = (255, 255, 255),
+            self,
+            lines: list[str],
+            padding_offset: float = 0,
+            margin: float = 0,
+            text_color: tuple[int, int, int] = (0, 0, 0),
+            background_color: tuple[int, int, int] = (255, 255, 255),
     ) -> Image.Image:
         """
         Main function for text rending. Return a `PIL Image` object.
 
         :param lines: Lines needed to rend.
-        :param padding_offset: Sum a offset to default padding. Default is `0`.
+        :param padding_offset: Sum an offset to default padding. Default is `0`.
         :param margin: Margin wraps a character. Default is `0`.
         :param text_color: Default is black `(0, 0, 0)`.
         :param background_color: Default is white `(255, 255, 255)`.

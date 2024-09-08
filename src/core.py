@@ -1,18 +1,19 @@
 import numpy as np
 from PIL import Image
-from converter import converter
+
 from _types import *
+from converter import Converter
 
 
-class core:
+class Core:
     """Core functions convert image to ascii-art."""
 
     @staticmethod
     def asciify(
-        image: Image.Image,
-        glyphs: list[str],
-        font_path: StrOrBytesPath,
-        linear: bool = False,
+            image: Image.Image,
+            glyphs: list[str],
+            font_path: StrOrBytesPath,
+            linear: bool = False,
     ) -> list[str]:
         """
         Convert `PIL Image` object to `ascii_art`.
@@ -25,7 +26,7 @@ class core:
 
         arr = np.array(image)
         ascii_art = []
-        c = converter(glyphs, font_path)
+        c = Converter(glyphs, font_path)
 
         for i in range(arr.shape[0]):
             line = ""

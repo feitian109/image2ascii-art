@@ -1,10 +1,11 @@
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
-from font_tool import font_tool
+
 from _types import *
+from fonttool import FontTool
 
 
-class converter:
+class Converter:
     """Convert color value to ascii character."""
 
     # `c2a` stands for color_to_ascii
@@ -15,10 +16,11 @@ class converter:
         self._c2a_filled = {}
         self._c2a_linear = {}
 
-    def _get_c2a(self, glyphs: list[str], font_path: StrOrBytesPath) -> dict[int, str]:
+    @staticmethod
+    def _get_c2a(glyphs: list[str], font_path: StrOrBytesPath) -> dict[int, str]:
         font = ImageFont.truetype(font_path, 72)
         # determine canvas size
-        _, _, max_right, max_btm = font_tool.get_fontbbox(font)
+        _, _, max_right, max_btm = FontTool.get_fontbbox(font)
         color_value = []
 
         # get every glyph's color value
@@ -36,11 +38,13 @@ class converter:
 
         return dict(zip(color_value, glyphs))
 
-    def _get_sorted_item(self, c2a_dict: dict[int, str]) -> list:
+    @staticmethod
+    def _get_sorted_item(c2a_dict: dict[int, str]) -> list:
         """Make c2a easy to print and iter"""
         return sorted(c2a_dict.items(), key=lambda x: x[0])
 
-    def _fill_dict(self, c2a_dict: dict[int, str]) -> dict[int, str]:
+    @staticmethod
+    def _fill_dict(c2a_dict: dict[int, str]) -> dict[int, str]:
         """Extend c2a_dict for any color in the range of [0,255]"""
         dic = {}
 

@@ -1,7 +1,7 @@
 from _types import *
 
 
-class text_tool:
+class TextTool:
     """Text tools."""
 
     @staticmethod
