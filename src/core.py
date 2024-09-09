@@ -27,10 +27,11 @@ class Core:
         arr = np.array(image)
         ascii_art = []
         c = Converter(glyphs, font_path)
+        color2ascii = c.color2ascii(linear=linear)
 
         for i in range(arr.shape[0]):
             line = ""
             for j in range(arr.shape[1]):
-                line += c.color2ascii(arr[i, j].item(), linear)
+                line += color2ascii[arr[i, j].item()]
             ascii_art.append(line)
         return ascii_art
