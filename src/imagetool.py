@@ -34,15 +34,20 @@ class ImageTool:
         # resize image
         print(f"Original size: {image.width}x{image.height}")
 
-        if max_length is not None and max(image.width, image.height) > max_length:
-            # W / w = H / h
-            if image.width >= image.height:
-                target_width = max_length
-                target_height = int(image.height / image.width * max_length)
-            else:
-                target_height = max_length
-                target_width = int(image.width / image.height * max_length)
+        if max_length is not None:
+            if max_length <= 0:
+                msg = "`max_length` must bigger than 0"
+                raise ValueError(msg)
 
-            image = image.resize((target_width, target_height), resample=resample)
-            print(f"Resized size: {image.width}x{image.height}")
+            if max(image.width, image.height) > max_length:
+                # W / w = H / h
+                if image.width >= image.height:
+                    target_width = max_length
+                    target_height = int(image.height / image.width * max_length)
+                else:
+                    target_height = max_length
+                    target_width = int(image.width / image.height * max_length)
+
+                image = image.resize((target_width, target_height), resample=resample)
+                print(f"Resized size: {image.width}x{image.height}")
         return image
