@@ -9,7 +9,6 @@ Image2ascii-art contains multiple tools to convert a picture into a monochrome A
 | Input1 (Picture)                                             | Output1 (Picture)                                                        | Output2 (Text)                                               |
 |--------------------------------------------------------------|--------------------------------------------------------------------------|--------------------------------------------------------------|
 | ![vegetables.png](.github/resources/mainpage/vegetables.png) | ![vegetables_ascii.png](.github/resources/mainpage/vegetables_ascii.png) | [vegetables_ascii.txt](examples/output/vegetables_ascii.txt) |
-| ![gray-scale.png](.github/resources/mainpage/gray-scale.png) | ![gray-scale_ascii.png](.github/resources/mainpage/gray-scale_ascii.png) | [gray-scale_ascii.txt](examples/output/gray-scale_ascii.txt) |
 
 ## Features:
 
