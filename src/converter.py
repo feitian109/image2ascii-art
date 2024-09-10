@@ -74,3 +74,9 @@ class Converter:
 
         print(f"Color2Ascii: {c2a}")
         return self._fill_c2a(c2a)
+
+    def ascii2color(self) -> dict[str, int]:
+        """
+        Return a dict mapping glyph to color.
+        """
+        return dict(zip(self.glyphs, self.color_values))

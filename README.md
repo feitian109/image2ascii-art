@@ -18,6 +18,7 @@ Image2ascii-art contains multiple tools to convert a picture into a monochrome A
   color, etc.
 * **High Scalability**: Image2ascii defines lots of functions to achieve a workflow. Based on their input and output
   type, you can easily write your own functions and add them to the workflow.
+* **Unasciify**: You can unasciify a Ascii Art (txt format) back to gray-scale image.
 
 ## Usage:
 

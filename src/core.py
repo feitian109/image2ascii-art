@@ -35,3 +35,34 @@ class Core:
                 line += color2ascii[arr[i, j].item()]
             ascii_art.append(line)
         return ascii_art
+
+    @staticmethod
+    def unasciify(
+            lines: list[str],
+            font_path: StrOrBytesPath,
+    ) -> Image.Image:
+        """
+        Convert `ascii_art` back to `PIL Image` object.
+
+        :param lines: `ascii_art` needs to convert back.
+        :param font_path: `unasciify` use a font file to get a dict describing how to convert ascii to color.
+        """
+
+        glyphs = set()
+        for line in lines:
+            for glyph in line:
+                glyphs.add(glyph)
+
+        c = Converter(list(glyphs), font_path)
+        ascii2color = c.ascii2color()
+
+        image_width = len(lines[0]) - 1  # remove '\n' at the end of line
+        image_height = len(lines)
+        arr = np.empty([image_height, image_width], dtype=np.uint8)
+
+        print(f"Output image size: {image_width}x{image_height}")
+        for i in range(image_height):
+            for j in range(image_width):
+                arr[i, j] = ascii2color[lines[i][j]]
+
+        return Image.fromarray(arr)
