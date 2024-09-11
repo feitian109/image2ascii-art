@@ -16,21 +16,21 @@ class Render:
         self.height = max_btm
 
     def rend(
-            self,
-            lines: list[str],
-            padding_offset: float = 0,
-            margin: float = 0,
-            text_color: tuple[int, int, int] = (0, 0, 0),
-            background_color: tuple[int, int, int] = (255, 255, 255),
+        self,
+        lines: list[str],
+        padding_offset: float = 0,
+        margin: float = 0,
+        text_color: tuple[int, int, int, int] = (0, 0, 0, 255),
+        background_color: tuple[int, int, int, int] = (255, 255, 255, 255),
     ) -> Image.Image:
         """
-        Main function for text rending. Return a `PIL Image` object.
+        Main function for text rending. Return a `PIL Image` object (in RGBA color mode).
 
         :param lines: Lines needed to rend.
         :param padding_offset: Sum an offset to default padding. Default is `0`.
         :param margin: Margin wraps a character. Default is `0`.
-        :param text_color: Default is black `(0, 0, 0)`.
-        :param background_color: Default is white `(255, 255, 255)`.
+        :param text_color: Default is black `(0, 0, 0, 255)`.
+        :param background_color: Default is white `(255, 255, 255, 255)`.
         """
 
         padding = (self.height - self.width) / 2 + padding_offset
@@ -43,7 +43,7 @@ class Render:
         image_size = (int(block_width * len(lines[0])), int(block_height * len(lines)))
         print(f"Rended image size: {image_size[0]}x{image_size[1]}")
 
-        img = Image.new("RGB", image_size, color=background_color)
+        img = Image.new("RGBA", image_size, color=background_color)
         draw = ImageDraw.Draw(img)
 
         # init position
