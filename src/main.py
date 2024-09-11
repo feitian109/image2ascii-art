@@ -9,7 +9,7 @@ from texttool import TextTool
 
 
 def minimal_demo(
-        input_path: Path, glyphs: list[str], font_path: Path, output_path: Path
+    input_path: Path, glyphs: list[str], font_path: Path, output_path: Path
 ):
     processed_img = ImageTool.preprocess(Image.open(input_path))
     ascii_text = Core.asciify(processed_img, glyphs, font_path)
@@ -26,13 +26,13 @@ more_glyphs = list(
 )
 
 # input
-input_path = Path(r"../examples/input/vegetables.png")
+input_path = Path(r"./examples/input/vegetables.png")
 
 # About font, you can read this doc `assets/README.md`
-font_path = Path(r"../assets/fonts/FiraMono.ttf")
+font_path = Path(r"./assets/fonts/FiraMono.ttf")
 
 # output
-output_path = Path(r"../examples/output")
+output_path = Path(r"./examples/output")
 
 # Run our demo
 minimal_demo(input_path, more_glyphs, font_path, output_path)

@@ -11,7 +11,7 @@ class Converter:
     # `c2a` stands for color_to_ascii
 
     def __init__(self, glyphs: list[str], font_path: StrOrBytesPath):
-        color_values = self._get_color_value(glyphs, font_path)
+        color_values = self.__get_color_value(glyphs, font_path)
 
         # sort `color_values` and `glyphs`
         bundles = list(zip(color_values, glyphs))
@@ -21,7 +21,7 @@ class Converter:
         self.glyphs = [i[1] for i in bundles]
 
     @staticmethod
-    def _get_color_value(glyphs: list[str], font_path: StrOrBytesPath) -> list[int]:
+    def __get_color_value(glyphs: list[str], font_path: StrOrBytesPath) -> list[int]:
         font = ImageFont.truetype(font_path, 72)
         # determine canvas size
         _, _, max_right, max_btm = FontTool.get_fontbbox(font)
@@ -43,7 +43,7 @@ class Converter:
         return color_value
 
     @staticmethod
-    def _fill_c2a(c2a_dict: dict[int, str]) -> dict[int, str]:
+    def __fill_c2a(c2a_dict: dict[int, str]) -> dict[int, str]:
         """Extend c2a_dict for any color in the range of [0,255]"""
         dic = {}
 
@@ -52,7 +52,7 @@ class Converter:
             dic[i] = c2a_dict[closest]
         return dic
 
-    def _get_c2a_linear(self):
+    def __get_c2a_linear(self):
         c2a_linear = {}
 
         step = 255 / (len(self.glyphs) - 1)
@@ -68,12 +68,12 @@ class Converter:
         """
 
         if linear:
-            c2a = self._get_c2a_linear()
+            c2a = self.__get_c2a_linear()
         else:
             c2a = dict(zip(self.color_values, self.glyphs))
 
         print(f"Color2Ascii: {c2a}")
-        return self._fill_c2a(c2a)
+        return self.__fill_c2a(c2a)
 
     def ascii2color(self) -> dict[str, int]:
         """

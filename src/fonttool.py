@@ -10,7 +10,7 @@ class FontTool:
 
     @staticmethod
     def get_fontbbox(
-            font: ImageFont.FreeTypeFont, glyphs: list[str] | None = None
+        font: ImageFont.FreeTypeFont, glyphs: list[str] | None = None
     ) -> tuple[float, float, float, float]:
         """
         Get font's bound box. Return a tuple contain `min_left`, `min_top`, `max_right`, `max_btm`

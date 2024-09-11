@@ -10,10 +10,10 @@ class Core:
 
     @staticmethod
     def asciify(
-            image: Image.Image,
-            glyphs: list[str],
-            font_path: StrOrBytesPath,
-            linear: bool = False,
+        image: Image.Image,
+        glyphs: list[str],
+        font_path: StrOrBytesPath,
+        linear: bool = False,
     ) -> list[str]:
         """
         Convert `PIL Image` object to `ascii_art`.
@@ -38,8 +38,8 @@ class Core:
 
     @staticmethod
     def unasciify(
-            lines: list[str],
-            font_path: StrOrBytesPath,
+        lines: list[str],
+        font_path: StrOrBytesPath,
     ) -> Image.Image:
         """
         Convert `ascii_art` back to `PIL Image` object.

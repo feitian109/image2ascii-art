@@ -6,9 +6,9 @@ class ImageTool:
 
     @staticmethod
     def preprocess(
-            image: Image.Image,
-            max_length: int | None = 128,
-            resample: int = Image.Resampling.NEAREST,
+        image: Image.Image,
+        max_length: int | None = 128,
+        resample: int = Image.Resampling.NEAREST,
     ) -> Image.Image:
         """
         Image will be converted into `grayscale` mode. Then its size will be limit to `max_length`.
