@@ -10,7 +10,7 @@ Image2ascii-art contains multiple tools to convert a picture into a monochrome A
 |--------------------------------------------------------------|--------------------------------------------------------------------------|--------------------------------------------------------------|
 | ![vegetables.png](.github/resources/mainpage/vegetables.png) | ![vegetables_ascii.png](.github/resources/mainpage/vegetables_ascii.png) | [vegetables_ascii.txt](examples/output/vegetables_ascii.txt) |
 
-## Features:
+## Features
 
 * **Optimized output**: No matter what monospace fonts you use, you can have a high quality output.
 * **Customizable**: You can easily change the input size, glyphs in the Ascii Art, output picture's typesetting and
@@ -19,7 +19,7 @@ Image2ascii-art contains multiple tools to convert a picture into a monochrome A
   type, you can easily write your own functions and add them to the workflow.
 * **Unasciify**: You can unasciify a Ascii Art (txt format) back to gray-scale image.
 
-## Usage:
+## Usage
 
 1. Clone this repo.
 2. Open `src/main.py`
