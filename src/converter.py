@@ -1,3 +1,4 @@
+import bisect
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
 
@@ -46,10 +47,15 @@ class Converter:
     def __fill_c2a(c2a_dict: dict[int, str]) -> dict[int, str]:
         """Extend c2a_dict for any color in the range of [0,255]"""
         dic = {}
+        c2a_dict_keys = list(c2a_dict.keys())
 
         for i in range(0, 255):
-            closest = min(c2a_dict.keys(), key=lambda x: abs(x - i))
-            dic[i] = c2a_dict[closest]
+            idx = bisect.bisect(c2a_dict_keys, i)
+            idx_of_better_key = min(
+                idx - 1, idx, key=lambda idx: abs(c2a_dict_keys[idx] - i)
+            )
+            dic[i] = c2a_dict[c2a_dict_keys[idx_of_better_key]]
+
         return dic
 
     def __get_c2a_linear(self):
