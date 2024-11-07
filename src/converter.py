@@ -2,15 +2,14 @@ import bisect
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw
 
-from _types import *
-from fonttool import FontTool
+from _types import StrOrBytesPath
+from font_tool import FontTool
 
 
 class Converter:
     """Convert color value to ascii character."""
 
     # `c2a` stands for color_to_ascii
-
     def __init__(self, glyphs: list[str], font_path: StrOrBytesPath):
         color_values = self.__get_color_value(glyphs, font_path)
 
@@ -25,7 +24,7 @@ class Converter:
     def __get_color_value(glyphs: list[str], font_path: StrOrBytesPath) -> list[int]:
         font = ImageFont.truetype(font_path, 72)
         # determine canvas size
-        _, _, max_right, max_btm = FontTool.get_fontbbox(font)
+        _, _, max_right, max_btm = FontTool.getfontbbox(font)
         color_value = []  # type: list[int]
 
         # get every glyph's color value

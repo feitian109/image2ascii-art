@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 
-from _types import *
-from fonttool import FontTool
+from _types import StrOrBytesPath
+from font_tool import FontTool
 
 
 class Render:
@@ -11,7 +11,7 @@ class Render:
         self.font = ImageFont.truetype(font_path, font_size)
 
         # get font's bound box
-        min_left, _, max_right, max_btm = FontTool.get_fontbbox(self.font)
+        min_left, _, max_right, max_btm = FontTool.getfontbbox(self.font)
         self.width = max_right - min_left
         self.height = max_btm
 

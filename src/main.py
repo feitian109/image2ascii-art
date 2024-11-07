@@ -3,9 +3,15 @@ from pathlib import Path
 from PIL import Image
 
 from core import Core
-from imagetool import ImageTool
+from image_tool import ImageTool
 from render import Render
-from texttool import TextTool
+from text_tool import TextTool
+
+# You can define your glyphs here
+simple_glyphs = list(r" .1257:BDEIJKLMPQRSUXYZbdgijqrsuv")
+more_glyphs = list(
+    r" 0123456789!#%&*+,-./:;<=>?@\|~abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+)
 
 
 def minimal_demo(
@@ -19,21 +25,19 @@ def minimal_demo(
     TextTool.save(ascii_text, output_path / f"{input_path.stem}_ascii.txt")
 
 
-# You can customise your glyphs here
-simple_glyphs = list(r" .1257:BDEIJKLMPQRSUXYZbdgijqrsuv")
-more_glyphs = list(
-    r" 0123456789!#%&*+,-./:;<=>?@\|~abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-)
+def main():
+    # input
+    input_path = Path(r"./examples/input/vegetables.png")
 
-# input
-input_path = Path(r"./examples/input/vegetables.png")
+    # About font, you can read this doc `assets/README.md`
+    font_path = Path(r"./assets/fonts/FiraMono.ttf")
 
-# About font, you can read this doc `assets/README.md`
-font_path = Path(r"./assets/fonts/FiraMono.ttf")
+    # output
+    output_path = Path(r"./examples/output")
 
-# output
-output_path = Path(r"./examples/output")
+    # Run our demo
+    minimal_demo(input_path, more_glyphs, font_path, output_path)
+    print("Done")
 
-# Run our demo
-minimal_demo(input_path, more_glyphs, font_path, output_path)
-print("Done")
+
+main()

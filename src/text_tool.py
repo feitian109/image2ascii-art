@@ -1,4 +1,4 @@
-from _types import *
+from _types import StrOrBytesPath
 
 
 class TextTool:

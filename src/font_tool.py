@@ -9,7 +9,7 @@ class FontTool:
     """A collection of font tool."""
 
     @staticmethod
-    def get_fontbbox(
+    def getfontbbox(
         font: ImageFont.FreeTypeFont, glyphs: list[str] | None = None
     ) -> tuple[float, float, float, float]:
         """
