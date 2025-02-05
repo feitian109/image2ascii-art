@@ -36,4 +36,4 @@ Image2ascii-art contains multiple tools to convert a picture into a monochrome A
 
 ## License
 
-Apache-2.0 License
+MIT License
